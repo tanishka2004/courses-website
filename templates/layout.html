@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{params["title"]}}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='/img/logo.ico') }}">
+</head>
+<body>
+        <header>
+            <div id="logo">
+                <a href="/">{{params["title"]}}</a>
+            </div>
+            <div class="nav-area">
+                <div class="navbar">
+                <a href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Our Services
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">Free Udemy Courses</a>
+                        <a href="#">Internships</a>
+                    </div>
+                </div>
+                 <a href="/about">About Us</a>
+                 <a href="/contact">Contact Us</a>
+             </div>
+             <div id="search-area">
+                 <form>
+                     <input class="search-bar" type="search" placeholder="Search..." aria-label="Search">
+                     <button type="submit"><i class="fa fa-search"></i></button>
+                 </form>
+             </div>
+            </div>
+        </header>
+        <main>
+              {% block body %}
+              {% endblock %}
+        </main>
+        <footer>
+            <p>&copy; {{params["title"]}} 2023</p>
+        </footer>
+</body>
+</html>
