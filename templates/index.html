@@ -1,4 +1,20 @@
 {% extends 'layout.html' %}
 {% block body %}
-    Homepage content here
+    <div class = "homepage">
+        {% if data|length == 0 %}
+            <div class="no-data">
+                <img src="{{ url_for('static',filename='/img/no-data.jpg') }}" />
+                <p>No Data Found</p>
+            </div>
+        {% else %}
+            {% for course in data %}
+                <div class="course-details-container">
+                    <h3>{{course[1]}}</h3>
+                    <img src="{{course[3]}}" alt="Course Image"/>
+                    <a href="{{course[2]}}"><button class="product-button">View Course</button></a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
 {% endblock %}
