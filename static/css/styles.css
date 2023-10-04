@@ -44,7 +44,6 @@ main {
 
 /* Links inside the navbar */
 .navbar a {
-
   float: left;
   font-size: 16px;
   color: white;
@@ -138,15 +137,16 @@ main {
 
 .homepage {
     display: flex;
-    justify-content: column;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 #courses {
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
 }
 
 .course-details-container {
@@ -186,6 +186,10 @@ main {
 /* Style for the anchor element inside the button with class "product-button" */
 a {
     text-decoration: none; !important
+}
+
+.pagination {
+    margin: 20px 0;
 }
 
 #about-us, #disclaimer-page, #newsletter-page {

@@ -1,21 +1,34 @@
 {% extends 'layout.html' %}
 {% block body %}
     <div class = "homepage">
-        {% if data|length == 0 %}
+        {% if data.items|length == 0 %}
             <div class="no-data">
                 <img src="{{ url_for('static',filename='/img/no-data.jpg') }}" />
                 <p>No Data Found</p>
             </div>
         {% else %}
             <div id="courses">
-                {% for course in data %}
+                {% for course in data.items %}
                 <div class="course-details-container">
-                    <h3 id="course-title">{{course[1]}}</h3>
-                    <img src="{{course[3]}}" alt="Course Image"/>
-                    <a href="{{course[2]}}"><button class="product-button">View Course</button></a>
+                    <h3 id="course-title">{{course.title}}</h3>
+                    <img src="{{course.img_url}}" alt="Course Image"/>
+                    <a href="{{course.url}}"><button class="product-button">View Course</button></a>
                 </div>
             {% endfor %}
             </div>
+        <div class="pagination">
+        <span class="step-links">
+            {% if data.has_prev %}
+                <a href="?page=1">&laquo; First</a>
+                <a href="?page={{ data.prev_num }}">Previous</a>
+            {% endif %}
+            <span class="current-page">{{ data.page }}</span>
+            {% if data.has_next %}
+                <a href="?page={{ data.next_num }}">Next</a>
+                <a href="?page={{ data.pages }}">Last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
         {% endif %}
     </div>
 

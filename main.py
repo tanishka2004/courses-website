@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, flash, session, redirect, url_for
 import json
-import mysql.connector
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import bcrypt
@@ -51,17 +50,6 @@ class Courses(db.Model):
     added_by = db.Column(db.String(20), nullable=False)
 
 
-# remove this
-mysql_config = {
-    'host': params["db_url"],
-    'user': "root",
-    'password': "",
-    'database': params["db_name"],
-}
-
-conn = mysql.connector.connect(**mysql_config)
-
-
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html', params=params)
@@ -69,13 +57,10 @@ def page_not_found(error):
 
 @app.route("/")
 def index():
-    # Create a cursor
-    cursor = conn.cursor()
-    query = "SELECT * FROM courses ORDER BY entry_date DESC;"
-    cursor.execute(query)
-    results = cursor.fetchall()
-    cursor.close()
-    return render_template("index.html", params=params, data=results)
+    page = request.args.get('page', 1, type=int)  # Get the page parameter, default to 1
+    per_page = 8  # Number of items per page
+    items = Courses.query.order_by(Courses.entry_date.desc()).paginate(page=page, per_page=per_page, error_out=False)
+    return render_template("index.html", params=params, data=items)
 
 
 @app.route("/contact_us")
