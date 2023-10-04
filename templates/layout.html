@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{params["title"]}}</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='/img/logo.ico') }}">
 </head>
 <body>
@@ -14,18 +14,19 @@
             </div>
             <div class="nav-area">
                 <div class="navbar">
-                <a href="/">Home</a>
                 <div class="dropdown">
                     <button class="dropbtn">Our Services
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <a href="#">Free Udemy Courses</a>
+                        <a href="/">Free Udemy Courses</a>
                         <a href="#">Internships</a>
                     </div>
                 </div>
+                 <a href="/newsletter">Newsletter</a>
                  <a href="/about">About Us</a>
-                 <a href="/contact">Contact Us</a>
+                 <a href="/contact_us">Contact Us</a>
+                 <a href="/disclaimer">Disclaimer</a>
              </div>
              <div id="search-area">
                  <form>
@@ -40,7 +41,34 @@
               {% endblock %}
         </main>
         <footer>
-            <p>&copy; {{params["title"]}} 2023</p>
-        </footer>
+    <div class="foot_grid">
+        <div>
+            <h2>LemonMedia</h2>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/company/coursearena/">LinkedIn</a>
+                <a href="https://t.me/Coursearena">Telegram</a>
+                <!-- Add more social icons as needed -->
+            </div>
+        </div>
+        <div class="foot_link">
+            <h3>Useful Links</h3>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="#">Submit Coupon</a></li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+                <li><a href="https://chat.whatsapp.com/GqXD9WguuEl4plWgKGLMVn">Join Our Group</a></li>
+                <li><a href="#">Donate</a></li>
+            </ul>
+        </div>
+        <div class="foot_link" id="con">
+            <h3>Contact Us</h3>
+            <p>Mumbai, India</p>
+            <p>Email: contactlemonmedia@gmail.com</p>
+            <!-- Add phone number if needed -->
+        </div>
+    </div>
+</footer>
 </body>
 </html>

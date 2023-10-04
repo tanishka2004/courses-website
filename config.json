@@ -2,6 +2,6 @@
   "title": "CourseHub",
   "db_name": "coursehub_db",
   "db_url": "localhost",
-  "db_username": "",
+  "db_username": "root",
   "db_password": ""
 }

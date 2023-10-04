@@ -7,13 +7,15 @@
                 <p>No Data Found</p>
             </div>
         {% else %}
-            {% for course in data %}
+            <div id="courses">
+                {% for course in data %}
                 <div class="course-details-container">
-                    <h3>{{course[1]}}</h3>
+                    <h3 id="course-title">{{course[1]}}</h3>
                     <img src="{{course[3]}}" alt="Course Image"/>
                     <a href="{{course[2]}}"><button class="product-button">View Course</button></a>
                 </div>
             {% endfor %}
+            </div>
         {% endif %}
     </div>
 
