@@ -1,0 +1,25 @@
+{% extends 'admin-layout.html' %}
+{% block body %}
+<div class="container" id="admin-dashboard">
+    <div class="statistics">
+        {% if current_user.role == "admin" %}
+        <div class="big-nums-stat">
+            <h3>Total Admins</h3>
+            <h1>{{data["users_count"]}}</h1>
+        </div>
+        {% endif %}
+        <div class="big-nums-stat">
+            <h3>Total Posts</h3>
+            <h1>{{data["post_count"]}}</h1>
+        </div>
+    </div>
+    <div class="action-btns">
+        {% if current_user.role == "admin" %}
+        <a href="/add_user"><button class="btn-blue">Add User</button></a>
+<!--        <a href="/all_user"><button class="btn-blue">All Users</button></a>-->
+        {% endif %}
+        <a href="/add_post"><button class="btn-blue">Add Post</button></a>
+    </div>
+</div>
+
+{% endblock%}
