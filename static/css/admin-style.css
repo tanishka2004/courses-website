@@ -233,7 +233,7 @@ footer {
 }
 
 /*------------------Smaller Display CSS------*/
-@media(max-width: 786px) {
+@media(max-width: 650px) {
    .statistics {
         display: flex;
         flex-direction: column;
