@@ -3,26 +3,29 @@
 {% for message in get_flashed_messages() %}
 {% if message["success"] %}
 <div class="alert success">
-     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-     {{message["msg"]}}
-  </div>
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{message["msg"]}}
+</div>
 {% else %}
 <div class="alert fail">
-     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-     {{message["msg"]}}
-  </div>
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{message["msg"]}}
+</div>
 {% endif %}
 {% endfor %}
 <div class="container">
-  <a href="/admin/dashboard" id="home-button"><button><< Go to Home</button></a>
+  <a href="/admin/dashboard" id="home-button"><button>
+      << Go to Home</button></a>
   <form method="post" action="/add_post" autocomplete="off">
 
     <fieldset>
-      <legend><h2>Add Post</h2></legend>
+      <legend>
+        <h2>Add Post</h2>
+      </legend>
       <label for="title">Course Title: </label>
-      <input type="text" id="title" name="title" required><br/>
+      <input type="text" id="title" name="title" required><br />
       <label for="url">Course URL:&nbsp;</label>
-      <input type="url" id="url" name="url" required></input><br/> <br>
+      <input type="url" id="url" name="url" required></input><br /> <br>
       <input type="submit" value="Submit">
     </fieldset>
   </form>

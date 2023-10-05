@@ -3,28 +3,31 @@
 {% for message in get_flashed_messages() %}
 {% if message["success"] %}
 <div class="alert success">
-     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-     {{message["msg"]}}
-  </div>
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{message["msg"]}}
+</div>
 {% else %}
 <div class="alert fail">
-     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-     {{message["msg"]}}
-  </div>
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{message["msg"]}}
+</div>
 {% endif %}
 {% endfor %}
 
 {% if current_user.role == "admin" %}
 <div class="container">
-  <a href="/admin/dashboard" id="home-button"><button><< Go to Home</button></a>
+  <a href="/admin/dashboard" id="home-button"><button>
+      << Go to Home</button></a>
   <form method="post" action="/add_user" autocomplete="off">
 
     <fieldset>
-      <legend><h2>Add User</h2></legend>
+      <legend>
+        <h2>Add User</h2>
+      </legend>
       <label for="username">Username: </label>
-      <input type="text" id="username" name="username" maxlength="18" required><br/>
+      <input type="text" id="username" name="username" maxlength="18" required><br />
       <label for="password">Password:&nbsp;</label>
-      <input type="password" id="password" name="password" maxlength="18" required><br/>
+      <input type="password" id="password" name="password" maxlength="18" required><br />
       <label for="role">Role: </label>
       <select id="role" name="role" required>
         <option value="admin">Administrator</option>
@@ -36,11 +39,12 @@
 </div>
 {% else %}
 <div class="alert fail">
-     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-     You are not authorised to view this page!!!
-  </div>
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  You are not authorised to view this page!!!
+</div>
 <div class="container">
-  <a href="/admin/dashboard" id="home-button"><button><< Go to Home</button></a>
+  <a href="/admin/dashboard" id="home-button"><button>
+      << Go to Home</button></a>
 </div>
 {% endif %}
 {% endblock %}
