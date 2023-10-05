@@ -1,7 +1,13 @@
+* {
+    margin: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     width: 98%;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -14,7 +20,6 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    overflow-x
 }
 
 .nav-area {
@@ -32,6 +37,8 @@ header {
 
 main {
     min-height: 85vh;
+    width: 100%;
+    position: relative;
 }
 
  /* Navbar container */
@@ -136,10 +143,13 @@ main {
 }
 
 .homepage {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    position: absolute;
+    height: 100%;
 }
 
 #courses {
@@ -313,6 +323,7 @@ a {
 
 footer {
     background-color: #333;
+    width: 100%;
     color: #fff;
     padding: 40px 0;
 }
@@ -363,7 +374,7 @@ footer a {
     margin-bottom: 10px;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 786px) {
   header {
     flex-direction: column;
     float: none;
@@ -393,9 +404,7 @@ footer a {
   margin: auto;
   position: absolute;
   top: 50%;
-  transform: translate(20%, -5%);
   padding: 10px;
-  overflow: scroll;
 }
 
 #disclaimer-page {
@@ -415,7 +424,6 @@ footer a {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 90%;
 }
 
 .avatar {

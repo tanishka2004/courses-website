@@ -16,8 +16,7 @@
 
 {% if current_user.role == "admin" %}
 <div class="container">
-  <a href="/admin/dashboard" id="home-button"><button>
-      << Go to Home</button></a>
+  <a href="/admin/dashboard" id="home-button"><< Go To Home</a>
   <form method="post" action="/add_user" autocomplete="off">
 
     <fieldset>
@@ -43,8 +42,7 @@
   You are not authorised to view this page!!!
 </div>
 <div class="container">
-  <a href="/admin/dashboard" id="home-button"><button>
-      << Go to Home</button></a>
+  <a href="/admin/dashboard" id="home-button"><< Go To Home</a>
 </div>
 {% endif %}
 {% endblock %}

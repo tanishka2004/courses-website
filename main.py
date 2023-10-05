@@ -136,6 +136,7 @@ def admin_dashboard():
 
 
 @app.route("/add_user", methods=["GET", "POST"])
+@login_required
 def add_user():
     if current_user.role == "admin" and request.method == "POST":
         username = request.form["username"]
@@ -164,6 +165,7 @@ def add_user():
 
 
 @app.route("/add_post", methods=["GET", "POST"])
+@login_required
 def add_post():
     if request.method == "POST":
         title = request.form["title"]
