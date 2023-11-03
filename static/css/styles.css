@@ -190,6 +190,11 @@ main {
     background-color: #e54924;
 }
 
+#team-members {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Style for the anchor element inside the button with class "product-button" */
 a {
     text-decoration: none; !important
@@ -387,7 +392,7 @@ footer a {
 
   main {
     overflow: hidden;
-    min-height: 95vh;
+    min-height: 120vh;
     }
 
     #courses {
@@ -428,7 +433,7 @@ footer a {
 }
 
 .avatar {
-    width: 40%;
+    width: 50%;
     border-radius: 50%;
     border: white 3;
 }
