@@ -1,0 +1,88 @@
+{% extends 'admin-layout.html' %}
+{% block body %}
+
+<!-- Code for flash messages -->
+{% for message in get_flashed_messages() %}
+{% if message["success"] %}
+<div class="alert success">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{message["msg"]}}
+</div>
+{% else %}
+<div class="alert fail">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{message["msg"]}}
+</div>
+{% endif %}
+{% endfor %}
+<!-- Code for flash messages ends here -->
+<div class="container">
+    <a href="/admin/dashboard" id="home-button"><< Go To Home</a>
+    {% if data.items|length == 0 %}
+    <div class="no-data">
+        <p>No Data Found</p>
+    </div>
+    {% else %}
+  <div id="course-list">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Date Added</th>
+        <th>Action</th>
+      </tr>
+      {% for course in data.items %}
+      <tr>
+        <td>{{course.title}}</td>
+        <td>{{course.entry_date}}</td>
+          {% set sno = course.sno %}
+        <td><button onclick={{"deleteData(" + sno|string +")"}} >Delete</button></td>
+      </tr>
+      {% endfor %}
+    </table>
+
+  <div class="pagination">
+        <span class="step-links">
+            {% if data.has_prev %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ data.prev_num }}">Previous</a>
+            {% endif %}
+            <span class="current-page">{{ data.page }}</span>
+            {% if data.has_next %}
+            <a href="?page={{ data.next_num }}">Next</a>
+            <a href="?page={{ data.pages }}">Last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+  </div>
+     {% endif %}
+</div>
+
+<!-- JS Script to delete course -->
+<script>
+  function deleteData(sno) {
+    fetch(`/delete_posts?sno=${sno}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+            // You may need to add other headers as required
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        // Handle the success response as needed
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle any errors during the delete request
+    });
+    window.location.reload();
+  }
+</script>
+
+{% endblock %}

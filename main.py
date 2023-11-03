@@ -181,5 +181,30 @@ def add_post():
     return render_template("admin-add-post.html", params=params)
 
 
+@app.route("/delete_posts", methods=["GET", "DELETE"])
+@login_required
+def delete_posts():
+    if request.method == "DELETE":
+        sno = request.args.get('sno')
+        if sno:
+            course = Courses.query.filter_by(sno=sno).first()
+            if course:
+                db.session.delete(course)
+                db.session.commit()
+        #         msg = {'success': True, 'msg': f'Post with SNO {sno} deleted successfully'}
+        #         flash(msg)
+        #     else:
+        #         msg = {'success': False, 'msg': f'Post with SNO {sno} not found'}
+        #         flash(msg)
+        # else:
+        #     msg = {'success': False, 'msg': 'SNO parameter not provided'}
+        #     flash(msg)
+
+    page = request.args.get('page', 1, type=int)  # Get the page parameter, default to 1
+    per_page = 8  # Number of items per page
+    items = Courses.query.order_by(Courses.entry_date.desc()).paginate(page=page, per_page=per_page, error_out=False)
+    return render_template("delete-posts.html", params=params, data=items)
+
+
 if __name__ == "__main__":
-    app.run(debug=False, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0")

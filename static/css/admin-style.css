@@ -221,6 +221,39 @@ fieldset {
     background-color: #fff;
 }
 
+table {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table button {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
 
 
 /*--------------------------------------*/
@@ -248,6 +281,10 @@ footer {
     .action-btns {
         display: flex;
         flex-direction: column;
+    }
+
+    table {
+        margin: 0% 5%;
     }
 
 }
