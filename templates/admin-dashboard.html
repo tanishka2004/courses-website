@@ -15,11 +15,12 @@
     </div>
     <div class="action-btns">
         {% if current_user.role == "admin" %}
-        <a href="/add_user"><button class="btn-blue">Add User</button></a>
+        <a href="/admin/add_user"><button class="btn-blue">Add User</button></a>
+        <a href="/admin/manage_users"><button class="btn-blue">Manage Users</button></a>
         <!--        <a href="/all_user"><button class="btn-blue">All Users</button></a>-->
         {% endif %}
-        <a href="/add_post"><button class="btn-blue">Add Post</button></a>
-        <a href="/delete_posts"><button class="btn-blue">Delete Posts</button></a>
+        <a href="/admin/add_post"><button class="btn-blue">Add Post</button></a>
+        <a href="/admin/manage_posts"><button class="btn-blue">Manage Posts</button></a>
     </div>
 </div>
 

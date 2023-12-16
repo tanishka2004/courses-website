@@ -1,7 +1,5 @@
 {% extends 'admin-layout.html' %}
 {% block body %}
-
-<!-- Code for flash messages -->
 {% for message in get_flashed_messages() %}
 {% if message["success"] %}
 <div class="alert success">
@@ -15,6 +13,8 @@
 </div>
 {% endif %}
 {% endfor %}
+
+{% if current_user.role == "admin" %}
 <!-- Code for flash messages ends here -->
 <div class="container">
     <a href="/admin/dashboard" id="home-button"><< Go To Home</a>
@@ -26,16 +26,19 @@
   <div id="course-list">
     <table>
       <tr>
-        <th>Name</th>
+        <th>Username</th>
+        <th>Role</th>
         <th>Date Added</th>
-        <th>Action</th>
+        <th colspan="2">Actions</th>
       </tr>
-      {% for course in data.items %}
+      {% for user in data.items %}
       <tr>
-        <td>{{course.title}}</td>
-        <td>{{course.entry_date}}</td>
-          {% set sno = course.sno %}
-        <td><button onclick={{"deleteData(" + sno|string +")"}} >Delete</button></td>
+        <td>{{user.username}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.date_added}}</td>
+          {% set username = user.username %}
+        <td><button onclick={{"deleteData('" + username + "')"}} >Delete</button></td>
+          <td><button><a href="/admin/change_password?username={{username}}">Change Password</a> </button></td>
       </tr>
       {% endfor %}
     </table>
@@ -59,8 +62,8 @@
 
 <!-- JS Script to delete course -->
 <script>
-  function deleteData(sno) {
-    fetch(`/delete_posts?sno=${sno}`, {
+  function deleteData(username) {
+    fetch(`/admin/manage_users?username=${username}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -84,5 +87,13 @@
     window.location.reload();
   }
 </script>
-
+{% else %}
+<div class="alert fail">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  You are not authorised to view this page!!!
+</div>
+<div class="container">
+  <a href="/admin/dashboard" id="home-button"><< Go To Home</a>
+</div>
+{% endif %}
 {% endblock %}
