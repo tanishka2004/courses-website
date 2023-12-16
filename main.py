@@ -92,11 +92,8 @@ def admin_login():
         username = request.form["username"]
         password = request.form["password"].encode("utf-8")
 
-        print("Login Attempt: ", username, password)
         user = Users.query.filter_by(username=username).first()
         if user is not None and bcrypt.checkpw(password, user.password.encode("utf-8")):
-            msg = {'success': True, 'msg': "Login Successful"}
-            print("DONE")
             login_user(user)
             return redirect(url_for('admin_dashboard'))
         else:
@@ -135,7 +132,7 @@ def admin_dashboard():
         return render_template("admin-dashboard.html", params=params, data=data)
 
 
-@app.route("/add_user", methods=["GET", "POST"])
+@app.route("/admin/add_user", methods=["GET", "POST"])
 @login_required
 def add_user():
     if current_user.role == "admin" and request.method == "POST":
@@ -145,7 +142,6 @@ def add_user():
 
         # Hashing Password
         password = bcrypt.hashpw(password.encode('utf-8'), salt)
-        print(password)
 
         # Add adding to database logic here
         user = Users.query.filter_by(username=username).first()
@@ -164,7 +160,7 @@ def add_user():
         return render_template("admin-add-user.html", params=params, message=None)
 
 
-@app.route("/add_post", methods=["GET", "POST"])
+@app.route("/admin/add_post", methods=["GET", "POST"])
 @login_required
 def add_post():
     if request.method == "POST":
@@ -181,9 +177,9 @@ def add_post():
     return render_template("admin-add-post.html", params=params)
 
 
-@app.route("/delete_posts", methods=["GET", "DELETE"])
+@app.route("/admin/manage_posts", methods=["GET", "DELETE"])
 @login_required
-def delete_posts():
+def manage_posts():
     if request.method == "DELETE":
         sno = request.args.get('sno')
         if sno:
@@ -191,19 +187,47 @@ def delete_posts():
             if course:
                 db.session.delete(course)
                 db.session.commit()
-        #         msg = {'success': True, 'msg': f'Post with SNO {sno} deleted successfully'}
-        #         flash(msg)
-        #     else:
-        #         msg = {'success': False, 'msg': f'Post with SNO {sno} not found'}
-        #         flash(msg)
-        # else:
-        #     msg = {'success': False, 'msg': 'SNO parameter not provided'}
-        #     flash(msg)
 
     page = request.args.get('page', 1, type=int)  # Get the page parameter, default to 1
     per_page = 8  # Number of items per page
     items = Courses.query.order_by(Courses.entry_date.desc()).paginate(page=page, per_page=per_page, error_out=False)
-    return render_template("delete-posts.html", params=params, data=items)
+    return render_template("admin-manage-posts.html", params=params, data=items)
+
+
+@app.route("/admin/manage_users", methods=["GET", "DELETE"])
+@login_required
+def manage_users():
+    if current_user.role == "admin" and request.method == "DELETE":
+        username = request.args.get('username')
+        if username:
+            course = Users.query.filter_by(username=username).first()
+            if course:
+                db.session.delete(course)
+                db.session.commit()
+    page = request.args.get('page', 1, type=int)  # Get the page parameter, default to 1
+    per_page = 8  # Number of items per page
+    items = Users.query.order_by(Users.date_added.desc()).paginate(page=page, per_page=per_page, error_out=False)
+    return render_template("admin-manage-users.html", params=params, data=items)
+
+
+@app.route("/admin/change_password", methods=["GET", "POST"])
+@login_required
+def change_password():
+    username = request.args.get('username')
+    if current_user.role == "admin" and request.method == "POST":
+        username = request.form["username"]
+        if username is not None:
+            new_password = bcrypt.hashpw(request.form["password"].encode('utf-8'), salt)
+            user = Users.query.get_or_404(username)
+            user.password = new_password
+            db.session.commit()
+            msg = {'success': True, 'msg': "Password Changed Successfully!!! "}
+        else:
+            msg = {'success': False, 'msg': "Error Encountered !!!"}
+        flash(msg)
+        return redirect("/admin/manage_users")
+    else:
+        return render_template("admin-change-password.html", params=params, data=username)
 
 
 if __name__ == "__main__":
