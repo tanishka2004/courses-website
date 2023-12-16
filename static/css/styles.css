@@ -36,7 +36,7 @@ header {
 
 main {
     min-height: 95vh;
-    width: 95%;
+    width: 100%;
     position: relative;
 }
 
@@ -150,10 +150,10 @@ main {
 }
 
 #courses {
-    width: 95%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: center;
 }
 
 .course-details-container {
