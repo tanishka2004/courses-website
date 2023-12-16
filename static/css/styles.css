@@ -150,10 +150,10 @@ main {
 }
 
 #courses {
-    width: 100%;
+    width: 92%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
 }
 
 .course-details-container {
