@@ -13,8 +13,7 @@ with open("config.json", "r") as f:
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "Hello World!!!"
-app.config[
-    "SQLALCHEMY_DATABASE_URI"] = f'mysql://{params["db_username"]}:{params["db_password"]}@{params["db_url"]}/{params["db_name"]}'
+app.config["SQLALCHEMY_DATABASE_URI"] = params["params"]["local_uri"]
 db = SQLAlchemy(app)
 
 login_manager = LoginManager(app)
@@ -56,11 +55,8 @@ def page_not_found(error):
 
 
 @app.route("/")
-def index():
-    page = request.args.get('page', 1, type=int)  # Get the page parameter, default to 1
-    per_page = 8  # Number of items per page
-    items = Courses.query.order_by(Courses.entry_date.desc()).paginate(page=page, per_page=per_page, error_out=False)
-    return render_template("index.html", params=params, data=items)
+def home():
+    return render_template("home.html", params=params)
 
 
 @app.route("/contact_us")

@@ -1,7 +1,10 @@
 {
   "title": "CourseBuzz",
-  "db_name": "coursehub_db",
-  "db_url": "localhost",
-  "db_username": "root",
-  "db_password": "toor"
+  "params": {
+    "db_name": "coursehub_db",
+    "db_url": "localhost",
+    "db_username": "root",
+    "db_password": "toor",
+    "local_uri": "sqlite:///coursehub.db"
+  }
 }

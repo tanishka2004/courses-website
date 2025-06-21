@@ -11,14 +11,10 @@ body {
 }
 
 header {
-    float: left;
-    width: 100%;
-    background-color: #333;
+    /* Remove width: 100%; */
     color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
+    background: none;
 }
 
 .nav-area {
@@ -30,6 +26,7 @@ header {
 #logo a {
     text-decoration: none;
     font-weight: bold;
+    padding-left: 20px;
     font-size: 1.5rem;
     color: white;
 }
@@ -40,12 +37,22 @@ main {
     position: relative;
 }
 
- /* Navbar container */
+/* Navbar container */
 .navbar {
+  background: linear-gradient(90deg, #1c2841 0%, #003153 100%);
+  box-shadow: 0 2px 12px rgba(0, 33, 71, 0.10);
+  height: 80px; /* Increased height */
+  min-height: 80px;
   display: flex;
-  overflow: hidden;
-  background-color: #333;
-  font-family: Arial;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2.2rem;
+  border-radius: 0 0 16px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: box-shadow 0.3s;
+  margin-bottom: 2.5rem; /* <-- Add this line for spacing */
 }
 
 /* Links inside the navbar */
@@ -56,7 +63,30 @@ main {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  color: inherit;
+  background: none;
+  text-decoration: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  transition: color 0.3s;
 }
+
+.navbar-logo,
+.navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 900px;
+    width: 100%;
+    justify-content: center;
+}
+
 
 /* The dropdown container */
 .dropdown {
@@ -79,6 +109,11 @@ main {
 /* Add a red background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color: red;
+}
+
+.navbar-logo a:hover {
+  color: #60a5fa;
+  background: none;
 }
 
 /* Dropdown content (hidden by default) */
@@ -460,5 +495,282 @@ footer a {
 
     .foot_link {
         margin-right: 0;
+    }
+}
+
+/* Navbar styles (from previous answer) */
+.navbar {
+    background: linear-gradient(90deg, #1c2841 0%, #003153 100%);
+    box-shadow: 0 2px 12px rgba(0, 33, 71, 0.10);
+    height: 80px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2.2rem;
+    border-radius: 0 0 16px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: box-shadow 0.3s;
+    margin-bottom: 2.5rem; /* <-- Add this line for spacing */
+}
+.navbar-logo a {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    text-shadow: 0 2px 8px rgba(0, 33, 71, 0.15);
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+.navbar-logo a:hover {
+  color: #60a5fa;
+  background: none;
+}
+.navbar-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    height: 100%;
+}
+.navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.08rem;
+    font-weight: 500;
+    padding: 0.4rem 1.1rem;
+    border-radius: 8px;
+    background: transparent;
+    position: relative;
+    transition: 
+        background 0.25s,
+        color 0.25s,
+        transform 0.18s;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.navbar-links a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%) scaleX(0);
+    width: 70%;
+    height: 3px;
+    background: linear-gradient(90deg, #60a5fa 0%, #1d2951 100%);
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+}
+.navbar-links a:hover {
+  background: #1d2951;
+  color: #60a5fa;
+  transform: translateY(-2px) scale(1.06);
+}
+.navbar-links a:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Hero section */
+.hero {
+    background: linear-gradient(120deg, #1c2841 60%, #003153 100%);
+    color: #fff;
+    padding: 3.5rem 1rem 2.5rem 1rem;
+    text-align: center;
+    border-radius: 0 0 32px 32px;
+    box-shadow: 0 4px 24px rgba(0, 33, 71, 0.10);
+    margin-bottom: 2.5rem;
+}
+.hero-content h1 {
+    font-size: 2.7rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+.hero-content h1 span {
+    color: #60a5fa;
+}
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #e0e7ef;
+}
+.hero-btn {
+    background: linear-gradient(90deg, #60a5fa 0%, #1d2951 100%);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(96,165,250,0.12);
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+.hero-btn:hover {
+    background: linear-gradient(90deg, #1d2951 0%, #60a5fa 100%);
+    transform: translateY(-3px) scale(1.04);
+}
+
+/* Features section */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin: 2rem 0 3rem 0;
+    flex-wrap: wrap;
+}
+.feature {
+    background: #fff;
+    color: #1c2841;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,49,83,0.07);
+    padding: 2rem 1.5rem;
+    min-width: 220px;
+    max-width: 320px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature i {
+    font-size: 2.2rem;
+    color: #60a5fa;
+    margin-bottom: 0.7rem;
+}
+.feature h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.feature p {
+    font-size: 1rem;
+    color: #374151;
+}
+.feature:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 6px 24px rgba(0,49,83,0.13);
+}
+
+/* About Us Section */
+.about-section {
+    background: linear-gradient(120deg, #f4f6fa 60%, #e9ecf1 100%);
+    padding: 3rem 0 2rem 0;
+    min-height: 80vh;
+}
+
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(28,40,65,0.08);
+    padding: 2.5rem 2rem 2rem 2rem;
+}
+
+.about-title {
+    color: #1c2841;
+    font-size: 2.3rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.about-intro {
+    font-size: 1.15rem;
+    color: #003153;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.about-highlight {
+    color: #2563eb;
+    font-weight: 700;
+}
+
+.about-container p {
+    color: #374151;
+    font-size: 1.08rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.about-team-title {
+    color: #003153;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1.5rem 0;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.team-card {
+    background: #f8fafc;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,49,83,0.07);
+    padding: 1.5rem 1.2rem;
+    min-width: 180px;
+    max-width: 220px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.team-card:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 6px 24px rgba(0,49,83,0.13);
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #2563eb;
+    margin-bottom: 0.7rem;
+}
+
+.team-name {
+    font-weight: 700;
+    color: #1c2841;
+    margin-bottom: 0.2rem;
+}
+
+.team-role {
+    color: #2563eb;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .features {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .about-container {
+        padding: 1.2rem 0.5rem;
+    }
+    .team-members {
+        flex-direction: column;
+        gap: 1.2rem;
     }
 }

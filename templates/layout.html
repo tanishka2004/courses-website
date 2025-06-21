@@ -12,23 +12,19 @@
 
 <body>
     <header>
-        <div id="logo">
-            <a href="/">{{params["title"]}}</a>
-        </div>
-        <div class="nav-area">
-            <div class="navbar">
-                <a href="/">Home</a>
-                <a href="/">Free Courses</a>
-                <a href="/newsletter">Newsletter</a>
-                <a href="https://forms.gle/W4kq9Ag8WkrMoGF69" target="_blank">Submit Coupon</a>
+        <nav class="navbar">
+            <div class="navbar-center">
+                <div class="navbar-logo">
+                    <a href="/">{{ params["title"] }}</a>
+                </div>
+                <div class="navbar-links">
+                    <a href="/">Home</a>
+                    <a href="/about">About</a>
+                    <a href="/courses">Courses</a>
+                    <a href="/contact">Contact</a>
+                </div>
             </div>
-            <!-- <div id="search-area">
-                <form>
-                    <input class="search-bar" type="search" placeholder="Search..." aria-label="Search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div> -->
-        </div>
+        </nav>
     </header>
     <main>
         {% block body %}
