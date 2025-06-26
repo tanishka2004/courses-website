@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class="contact-section">
+    <div class="contact-container">
+        <h1 class="contact-title">Contact Us</h1>
+        <p class="contact-intro">
+            Have questions, suggestions, or want to collaborate? Reach out to us!
+        </p>
+        <form class="contact-form" method="post">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit" class="contact-btn">Send Message</button>
+        </form>
+        <div class="contact-details">
+            <p><b>Email:</b> contactlemonmedia@gmail.com</p>
+            <p><b>WhatsApp:</b> <a href="https://wa.me/+918461085223" target="_blank">+91-8461085223</a></p>
+            <p><b>Location:</b> Mumbai, India</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

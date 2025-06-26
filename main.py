@@ -226,5 +226,17 @@ def change_password():
         return render_template("admin-change-password.html", params=params, data=username)
 
 
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        # You can add logic here to handle form submissions (e.g., send email, save to DB)
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        # For now, just flash a message or print to console
+        flash("Thank you for contacting us!", "success")
+    return render_template("contact.html", params=params)
+
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")

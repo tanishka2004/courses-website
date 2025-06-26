@@ -50,7 +50,7 @@ main {
   border-radius: 0 0 16px 16px;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 9999;
   transition: box-shadow 0.3s;
   margin-bottom: 2.5rem; /* <-- Add this line for spacing */
 }
@@ -576,12 +576,12 @@ footer a {
 
 /* Hero section */
 .hero {
-    background: linear-gradient(120deg, #1c2841 60%, #003153 100%);
-    color: #fff;
+    background: linear-gradient(120deg, #f8fafc 60%, #e0ecfc 100%);
+    color: #1c2841;
     padding: 3.5rem 1rem 2.5rem 1rem;
     text-align: center;
     border-radius: 0 0 32px 32px;
-    box-shadow: 0 4px 24px rgba(0, 33, 71, 0.10);
+    box-shadow: 0 4px 24px rgba(0, 49, 83, 0.08);
     margin-bottom: 2.5rem;
 }
 .hero-content h1 {
@@ -591,15 +591,15 @@ footer a {
     letter-spacing: 1px;
 }
 .hero-content h1 span {
-    color: #60a5fa;
+    color: #2563eb;
 }
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: #e0e7ef;
+    color: #374151;
 }
 .hero-btn {
-    background: linear-gradient(90deg, #60a5fa 0%, #1d2951 100%);
+    background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
     color: #fff;
     padding: 0.9rem 2.2rem;
     font-size: 1.1rem;
@@ -612,7 +612,7 @@ footer a {
     cursor: pointer;
 }
 .hero-btn:hover {
-    background: linear-gradient(90deg, #1d2951 0%, #60a5fa 100%);
+    background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
     transform: translateY(-3px) scale(1.04);
 }
 
@@ -637,7 +637,7 @@ footer a {
 }
 .feature i {
     font-size: 2.2rem;
-    color: #60a5fa;
+    color: #2563eb;
     margin-bottom: 0.7rem;
 }
 .feature h3 {
@@ -652,6 +652,72 @@ footer a {
 .feature:hover {
     transform: translateY(-6px) scale(1.04);
     box-shadow: 0 6px 24px rgba(0,49,83,0.13);
+}
+
+/* More Services Section */
+.more-services {
+    background: linear-gradient(90deg, #e0ecfc 0%, #f8fafc 100%);
+    padding: 2.5rem 1rem 2rem 1rem;
+    border-radius: 24px;
+    margin: 2.5rem auto 2rem auto;
+    max-width: 950px;
+    box-shadow: 0 2px 12px rgba(0,49,83,0.06);
+    text-align: center;
+}
+.more-services h2 {
+    color: #1c2841;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+.service-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.service-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,49,83,0.07);
+    padding: 2rem 1.5rem;
+    min-width: 220px;
+    max-width: 320px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.service-card i {
+    font-size: 2.5rem;
+    color: #ff0000;
+    margin-bottom: 0.7rem;
+}
+.service-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1c2841;
+}
+.service-card p {
+    font-size: 1rem;
+    color: #374151;
+    margin-bottom: 1rem;
+}
+.service-btn {
+   background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(96,165,250,0.12);
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+.service-btn:hover {
+     background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+    transform: translateY(-3px) scale(1.04);
 }
 
 /* About Us Section */
@@ -753,9 +819,125 @@ footer a {
     font-weight: 500;
 }
 
-/* Responsive */
+/* Disclaimer Page Styles */
+.disclaimer-section {
+    background: linear-gradient(120deg, #f8fafc 60%, #e0ecfc 100%);
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+.disclaimer-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(28,40,65,0.08);
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+
+.disclaimer-title {
+    color: #1c2841;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.disclaimer-container p {
+    color: #374151;
+    font-size: 1.08rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+.disclaimer-container em {
+    color: #2563eb;
+    font-style: normal;
+    font-weight: 600;
+    word-break: break-all;
+}
+
+/* Contact Page Styles */
+.contact-section {
+    background: linear-gradient(120deg, #f8fafc 60%, #e0ecfc 100%);
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+.contact-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(28,40,65,0.08);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+.contact-title {
+    color: #1c2841;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+}
+.contact-intro {
+    color: #374151;
+    margin-bottom: 1.5rem;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.contact-form input,
+.contact-form textarea {
+    padding: 0.8rem;
+    border: 1px solid #e0ecfc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border: 1.5px solid #2563eb;
+}
+.contact-btn {
+    background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+.contact-btn:hover {
+    background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+.contact-details {
+    margin-top: 1.5rem;
+    color: #003153;
+    font-size: 1rem;
+}
+.contact-details a {
+    color: #2563eb;
+    text-decoration: none;
+}
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 900px) {
-    .features {
+    .features, .service-cards {
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
