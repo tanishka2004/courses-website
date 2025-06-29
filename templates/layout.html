@@ -22,6 +22,10 @@
                     <a href="/about">About</a>
                     <a href="/courses">Courses</a>
                     <a href="/contact">Contact</a>
+                    <form class="navbar-search-form" method="get" action="/courses">
+    <input type="text" name="q" placeholder="Search courses..." value="{{ request.args.get('q', '') }}">
+    <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
                 </div>
             </div>
         </nav>

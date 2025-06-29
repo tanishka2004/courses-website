@@ -86,7 +86,53 @@ main {
     width: 100%;
     justify-content: center;
 }
+.navbar-search-form {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    padding: 2px 8px;
+    box-shadow: 0 1px 4px rgba(28,40,65,0.07);
+}
 
+.navbar-search-form input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: transparent;
+    color: #1c2841;
+    min-width: 140px;
+}
+
+.navbar-search-form button {
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    transition: color 0.2s;
+}
+
+.navbar-search-form button:hover {
+    color: #003153;
+}
+
+@media (max-width: 900px) {
+    .navbar-center {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .navbar-search-form {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
 
 /* The dropdown container */
 .dropdown {
@@ -653,7 +699,83 @@ footer a {
     transform: translateY(-6px) scale(1.04);
     box-shadow: 0 6px 24px rgba(0,49,83,0.13);
 }
+.ratings-reviews {
+    background: linear-gradient(90deg, #e0ecfc 0%, #f8fafc 100%);
+    padding: 2.5rem 1rem;
+    border-radius: 24px;
+    margin: 2.5rem auto 2rem auto;
+    max-width: 950px;
+    box-shadow: 0 2px 12px rgba(0,49,83,0.06);
+    text-align: center;
+}
+.ratings-reviews h2 {
+    color: #1c2841;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+.reviews-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.review-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,49,83,0.07);
+    padding: 1.5rem 1.2rem;
+    min-width: 220px;
+    max-width: 320px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.review-stars {
+    margin-bottom: 0.5rem;
+}
+.review-text {
+    color: #374151;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+.review-user {
+    color: #2563eb;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
 
+.course-expiry {
+    background: linear-gradient(90deg, #f8fafc 0%, #e0ecfc 100%);
+    padding: 2.5rem 1rem;
+    border-radius: 24px;
+    margin: 2.5rem auto 2rem auto;
+    max-width: 950px;
+    box-shadow: 0 2px 12px rgba(0,49,83,0.06);
+    text-align: center;
+}
+.course-expiry h2 {
+    color: #1c2841;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.expiry-info {
+    color: #374151;
+    font-size: 1.08rem;
+    margin: 0 auto;
+    max-width: 700px;
+}
+.expiry-info ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    text-align: left;
+    display: inline-block;
+}
+.expiry-info li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
 /* More Services Section */
 .more-services {
     background: linear-gradient(90deg, #e0ecfc 0%, #f8fafc 100%);
